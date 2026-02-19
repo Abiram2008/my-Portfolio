@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abiram | AI & ML Portfolio</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI, Arial, sans-serif;
+    background:#000;
+    color:rgb(255, 255, 255);
+    overflow-x:hidden;
+}
+
+/* MATRIX CANVAS */
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-3;
+}
+
+/* HEADER */
+
+header{
+    text-align:center;
+    padding:25px;
+    font-size:28px;
+    font-weight:700;
+    border-bottom:2px solid green;
+    box-shadow:0 0 20px  green;
+}
+
+/* SECTIONS */
+
+section{
+    max-width:950px;
+    margin:60px auto;
+    padding:20px;
+}
+
+/* GLOWING CARD */
+
+.card{
+    background:rgba(30,41,59,0.75);
+    backdrop-filter:blur(14px);
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:45px;
+    border:1px solid green;
+    box-shadow:
+        0 0 15px  green,
+        0 0 35px  green;
+    transition:0.4s ease;
+    animation:pulseGlow 3s infinite;
+}
+
+.card:hover{
+    box-shadow:
+        0 0 25px  green,
+        0 0 60px  green;
+}
+
+@keyframes pulseGlow{
+    0%{box-shadow:0 0 15px green;}
+    50%{box-shadow:0 0 35px  green;}
+    100%{box-shadow:0 0 15px  green;}
+}
+
+/* PROFILE */
+
+.profile{
+    text-align:center;
+}
+
+.profile img{
+    width:190px;
+    height:190px;
+    border-radius:50%;
+    border:4px solid  green;
+    object-fit:cover;
+    box-shadow:
+        0 0 25px  green,
+        0 0 50px  green;
+}
+
+/* HEADINGS */
+
+h2{
+    color: green;
+    margin-bottom:20px;
+}
+
+/* WORK GRID */
+
+.work-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:18px;
+}
+
+.work-box{
+    background:#020617;
+    padding:18px;
+    border-radius:14px;
+    text-align:center;
+    font-weight:600;
+    border:1px solid  green;
+    box-shadow:0 0 15px  green;
+    transition:0.3s ease;
+}
+
+.work-box:hover{
+    box-shadow:0 0 30px green, 0 0 60px  green;
+    transform:translateY(-6px);
+}
+
+/* CONTACT */
+
+.contact a{
+    color:rgb(0, 213, 255);
+    text-decoration:none;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    opacity:.6;
+    padding:25px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:600px){
+    section{margin:30px auto;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- MATRIX BACKGROUND -->
+<canvas id="matrix"></canvas>
+
+<header>
+<i class="fas fa-user-circle"></i> Abiram – AI & Machine Learning Student
+</header>
+
+<section>
+
+<div class="card profile">
+<img src="myphoto.jpg">
+<h2>Hello, I'm Abiram M</h2>
+<p>
+Passionate AI & ML student focused on intelligent systems, web development,
+and creative digital solutions.
+</p>
+</div>
+
+<div class="card">
+<h2>Our Work</h2>
+<div class="work-grid">
+<div class="work-box">🌐 Web Designing</div>
+<div class="work-box">🎬 Video Editing</div>
+<div class="work-box">🎨 Poster Making</div>
+<div class="work-box">📱 Social Media Designs</div>
+<div class="work-box">💻 UI/UX Layouts</div>
+<div class="work-box">📸 Creative Content</div>
+</div>
+</div>
+
+<div class="card">
+<h2>About Me</h2>
+<p>
+I am Abiram, currently pursuing a degree in Artificial Intelligence and Machine Learning at 
+Sri Amaraavathi College of Arts and Science, Karur. 
+I am dedicated to developing strong technical knowledge along with creative digital expertise 
+to build innovative and impactful solutions.
+</p>
+</div>
+
+<div class="card contact">
+<h2>Contact Details</h2>
+<p>📧 Email: <a href="mailto:abi255381@gmail.com">abi255381@gmail.com</a></p>
+<p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/abi-ram-m-27639a372" target="_blank">linkedin.com/in/abi-ram-m-27639a372</a></p>
+<p>💻 GitHub: <a href="https://github.com/Abiram2008" target="_blank">github.com/Abiram2008</a></p>
+<p>📸 Instagram: <a href="https://www.instagram.com/mr_abi_ram_008?igsh=enRxbjRkcXZmMnI1" target="_blank">@mr_abi_ram_008</a></p>
+<p>📞 Contact: 7695996046</p>
+</div>
+
+</section>
+
+<footer>
+© 2026 Abiram | Professional AI & ML Portfolio
+</footer>
+
+<script>
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = [];
+
+for(let x = 0; x < columns; x++)
+    drops[x] = 1;
+
+function draw(){
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#00ff00";
+    ctx.font = fontSize + "px monospace";
+
+    for(let i = 0; i < drops.length; i++){
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if(drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+            drops[i] = 0;
+
+        drops[i]++;
+    }
+}
+
+setInterval(draw, 33);
+</script>
+
+</body>
+</html>
